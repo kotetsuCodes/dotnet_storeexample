@@ -28,12 +28,12 @@ namespace donutrun
             if (!roleManager.RoleExists("Admin"))
             {
 
-                //    // first we create Admin role   
-                //    var role = new IdentityRole()
-                //    {
-                //        Name = "Admin"
-                //    };
-                //    roleManager.Create(role);
+                // first we create Admin role   
+                var role = new IdentityRole()
+                {
+                    Name = "Admin"
+                };
+                roleManager.Create(role);
 
                 //Here we create a Admin super user who will maintain the website                  
 

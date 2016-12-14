@@ -11,6 +11,12 @@ namespace donutrun.Controllers
     {
         public ActionResult Index()
         {
+            var store = db.Store.FirstOrDefault();
+            if(store != null && string.IsNullOrEmpty(store.HomeSplashImageUrl) == false)
+            {
+                ViewBag.HomeSplashImageUrl = store.HomeSplashImageUrl;
+            }
+
             return View();
         }
 

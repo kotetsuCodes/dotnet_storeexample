@@ -88,7 +88,7 @@ namespace donutrun.Controllers.Admin
                     {
                         if (db.Store.Any() == false)
                         {
-                            return RedirectToAction("Create", "Stores");
+                            return RedirectToAction("Create", "AdminStores");
                         }
                         else
                         {

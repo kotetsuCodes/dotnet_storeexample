@@ -13,8 +13,11 @@ namespace donutrun.Controllers
 
         public BaseController()
         {
-            ViewBag.StoreName = db.Store.First().DisplayName;
-            ViewBag.HomeSplashImageUrl = $"{ db.Store.First().HomeSplashImageUrl}";
+            var store = db.Store.FirstOrDefault();
+            if (store != null)
+            {
+                ViewBag.StoreName = store?.DisplayName ?? "";
+            }
         }
 
     }
