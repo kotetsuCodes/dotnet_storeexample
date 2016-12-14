@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.25920.0
+VisualStudioVersion = 15.0.26009.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "donutrun", "donutrun\donutrun.csproj", "{5F088729-C4F3-4FA5-8F00-1C831E7EDD63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "storeexample", "storeexample\storeexample.csproj", "{5F088729-C4F3-4FA5-8F00-1C831E7EDD63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
