@@ -1,0 +1,97 @@
+﻿@model donutrun.Models.Store
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Store</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOpenOnHolidays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOpenOnHolidays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HolidayMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HolidayMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiNational)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiNational)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiProvince)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiProvince)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeSplashImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeSplashImageUrl)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

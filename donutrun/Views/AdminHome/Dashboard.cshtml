@@ -1,0 +1,92 @@
+﻿@model donutrun.Models.DashboardViewModel
+
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Dashboard</h2>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+
+        <div class="panel panel-default">
+            <a href="@Url.Action("Index", "AdminOrders")">
+                <div class="panel-heading">Orders <i class="glyphicon glyphicon-wrench pull-right"></i></div>
+            </a>
+
+            <ul class="list-group">
+                <li class="list-group-item">Total: @Model.Orders.Count</li>
+                <li class="list-group-item">Last 24 Hours: @Model.OrdersLast24Hours.Count</li>
+                <li class="list-group-item">Last Week: @Model.OrdersLastWeek.Count</li>
+                <li class="list-group-item">Last Month: @Model.OrdersLastMonth.Count</li>
+            </ul>
+        </div>
+    </div>
+
+    @if (Model.Store.DeliveryAvailable)
+    {
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <a href="@Url.Action("Index", "AdminZipCodes")">
+                    <div class="panel-heading">Zip Codes <i class="glyphicon glyphicon-wrench pull-right"></i></div>
+                </a>
+                <ul class="list-group">
+                    <li class="list-group-item">Total: @Model.ZipCodes.Count</li>
+                </ul>
+            </div>
+        </div>
+    }
+
+    @if (Model.Store.DeliveryAvailable)
+    {
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <a href="@Url.Action("Index", "AdminDrivers")">
+                    <div class="panel-heading">Drivers <i class="glyphicon glyphicon-wrench pull-right"></i></div>
+                </a>
+
+                <ul class="list-group">
+                    <li class="list-group-item">Total: @Model.Drivers.Count</li>
+                    <li class="list-group-item">Active: @Model.DriversActive.Count</li>
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <a href="@Url.Action("Index", "AdminProductCategories")">
+                <div class="panel-heading">Product Categories <i class="glyphicon glyphicon-wrench pull-right"></i></div>
+            </a>
+
+            <ul class="list-group">
+                <li class="list-group-item">Total: @Model.ProductCategories.Count</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <a href="@Url.Action("Index", "AdminProducts")">
+                <div class="panel-heading">Products <i class="glyphicon glyphicon-wrench pull-right"></i></div>
+            </a>
+
+            <ul class="list-group">
+                <li class="list-group-item">Total: @Model.Products.Count</li>
+                <li class="list-group-item">Active: @Model.ProductsActive.Count</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+
+    </div>
+</div>

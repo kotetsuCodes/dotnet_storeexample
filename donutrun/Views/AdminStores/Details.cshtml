@@ -1,0 +1,91 @@
+﻿@model donutrun.Models.Store
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Store</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DisplayName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOpenOnHolidays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsOpenOnHolidays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HolidayMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HolidayMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiNational)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiNational)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiProvince)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiProvince)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HomeSplashImageUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HomeSplashImageUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StoreId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

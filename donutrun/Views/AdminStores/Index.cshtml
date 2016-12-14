@@ -1,0 +1,82 @@
+﻿@model IEnumerable<donutrun.Models.Store>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsOpenOnHolidays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HolidayMessage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsMultiNational)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsMultiProvince)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsMultiCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeSplashImageUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsOpenOnHolidays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HolidayMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMultiNational)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMultiProvince)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMultiCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeSplashImageUrl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StoreId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StoreId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StoreId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<donutrun.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOrdered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduledDeliveryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecurFrequency)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeeklyRecurDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlyRecurDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRecurring)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryAddress1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryAddress2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliveryAddress3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOrdered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScheduledDeliveryDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecurFrequency)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeeklyRecurDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlyRecurDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRecurring)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryAddress1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryAddress2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliveryAddress3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.OrderId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.OrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.OrderId })
+        </td>
+    </tr>
+}
+
+</table>
