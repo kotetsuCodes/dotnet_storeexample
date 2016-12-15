@@ -1,4 +1,5 @@
 ﻿using donutrun.Models;
+using storeexample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace donutrun.Controllers
 {
     public class HomeController : BaseController
     {
+        private DonutRunModel db = new DonutRunModel();
+
         public ActionResult Index()
         {
             var store = db.Store.FirstOrDefault();
@@ -27,11 +30,12 @@ namespace donutrun.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(ContactViewModel model)
         {
+            model.Contacts = db.Contacts.ToList();
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View(model);
         }
     }
 }
