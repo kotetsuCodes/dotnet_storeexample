@@ -1,16 +1,16 @@
-﻿using donutrun.Models;
+﻿using storeexample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace donutrun.Controllers.Admin
+namespace storeexample.Controllers.Admin
 {
     [Authorize(Roles = "Admin")]
     public class AdminHomeController : BaseAdminController
     {
-        private DonutRunModel db = new DonutRunModel();
+        private StoreExampleModel db = new StoreExampleModel();
 
         private DateTime lastDay = DateTime.Now.AddHours(-24);
         private DateTime lastWeek = DateTime.Now.AddDays(-7);

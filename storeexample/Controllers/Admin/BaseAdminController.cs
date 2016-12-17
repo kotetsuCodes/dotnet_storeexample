@@ -1,15 +1,15 @@
-﻿using donutrun.Models;
+﻿using storeexample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace donutrun.Controllers.Admin
+namespace storeexample.Controllers.Admin
 {
     public class BaseAdminController : Controller
     {
-        private DonutRunModel db = new DonutRunModel();
+        private StoreExampleModel db = new StoreExampleModel();
 
         public BaseAdminController()
         {

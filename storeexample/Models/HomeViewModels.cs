@@ -1,4 +1,4 @@
-﻿using donutrun.Models;
+﻿using storeexample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +9,10 @@ namespace storeexample.Models
     public class ContactViewModel
     {
         public IList<Contact> Contacts { get; set; }
+    }
+
+    public class HomePageViewModel
+    {
+        public IList<HomePageItem> HomePageItems { get; set; }
     }
 }

@@ -1,19 +1,19 @@
-namespace donutrun.Models
+namespace storeexample.Models
 {
     using System;
     using System.Data.Entity;
     using System.Linq;
 
-    public class DonutRunModel : DbContext
+    public class StoreExampleModel : DbContext
     {
-        // Your context has been configured to use a 'DonutRunModel' connection string from your application's 
+        // Your context has been configured to use a 'StoreExampleModel' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
-        // 'donutrun.Models.DonutRunModel' database on your LocalDb instance. 
+        // 'storeexample.Models.StoreExampleModel' database on your LocalDb instance. 
         // 
-        // If you wish to target a different database and/or database provider, modify the 'DonutRunModel' 
+        // If you wish to target a different database and/or database provider, modify the 'StoreExampleModel' 
         // connection string in the application configuration file.
-        public DonutRunModel()
-            : base("name=DonutRunModel")
+        public StoreExampleModel()
+            : base("name=StoreExampleModel")
         {
         }
 
@@ -32,6 +32,9 @@ namespace donutrun.Models
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderedProduct> OrderedProducts { get; set; }
+
+        //home page
+        public virtual DbSet<HomePageItem> HomePageItems { get; set; }
 
     }
 

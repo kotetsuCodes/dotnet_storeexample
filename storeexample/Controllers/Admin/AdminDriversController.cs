@@ -6,14 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using donutrun.Models;
+using storeexample.Models;
 
-namespace donutrun.Controllers.Admin
+namespace storeexample.Controllers.Admin
 {
     [Authorize(Roles = "Admin")]
     public class AdminDriversController : BaseAdminController
     {
-        private DonutRunModel db = new DonutRunModel();
+        private StoreExampleModel db = new StoreExampleModel();
 
         // GET: Drivers
         public ActionResult Index()

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace donutrun.Models
+namespace storeexample.Models
 {
     public class OrderedProduct
     {

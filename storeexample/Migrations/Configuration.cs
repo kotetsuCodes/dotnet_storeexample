@@ -1,20 +1,20 @@
-namespace donutrun.Migrations
+namespace storeexample.Migrations
 {
-    using donutrun.Models;
+    using storeexample.Models;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<donutrun.Models.DonutRunModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<storeexample.Models.StoreExampleModel>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(donutrun.Models.DonutRunModel context)
+        protected override void Seed(storeexample.Models.StoreExampleModel context)
         {
             //  This method will be called after migrating to the latest version.
 

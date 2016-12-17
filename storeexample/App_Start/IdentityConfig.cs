@@ -10,9 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using donutrun.Models;
+using storeexample.Models;
 
-namespace donutrun
+namespace storeexample
 {
     public class EmailService : IIdentityMessageService
     {

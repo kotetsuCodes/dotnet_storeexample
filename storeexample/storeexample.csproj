@@ -207,58 +207,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611250122072_AddServiceAreaAndZipcode.cs" />
-    <Compile Include="Migrations\201611250122072_AddServiceAreaAndZipcode.Designer.cs">
-      <DependentUpon>201611250122072_AddServiceAreaAndZipcode.cs</DependentUpon>
+    <Compile Include="Migrations\201612171952217_Initial.cs" />
+    <Compile Include="Migrations\201612171952217_Initial.Designer.cs">
+      <DependentUpon>201612171952217_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611250341377_AddStoreModels.cs" />
-    <Compile Include="Migrations\201611250341377_AddStoreModels.Designer.cs">
-      <DependentUpon>201611250341377_AddStoreModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612030503292_AddStores.cs" />
-    <Compile Include="Migrations\201612030503292_AddStores.Designer.cs">
-      <DependentUpon>201612030503292_AddStores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612032307338_RemovedCountriesProvinces.cs" />
-    <Compile Include="Migrations\201612032307338_RemovedCountriesProvinces.Designer.cs">
-      <DependentUpon>201612032307338_RemovedCountriesProvinces.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612032326203_AddDescriptionAndImageUrlToProduct.cs" />
-    <Compile Include="Migrations\201612032326203_AddDescriptionAndImageUrlToProduct.Designer.cs">
-      <DependentUpon>201612032326203_AddDescriptionAndImageUrlToProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100034169_AddProductCategories.cs" />
-    <Compile Include="Migrations\201612100034169_AddProductCategories.Designer.cs">
-      <DependentUpon>201612100034169_AddProductCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100200370_ChangeProductCategoryToOneToMany.cs" />
-    <Compile Include="Migrations\201612100200370_ChangeProductCategoryToOneToMany.Designer.cs">
-      <DependentUpon>201612100200370_ChangeProductCategoryToOneToMany.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100205260_AddedProductToProductCategories.cs" />
-    <Compile Include="Migrations\201612100205260_AddedProductToProductCategories.Designer.cs">
-      <DependentUpon>201612100205260_AddedProductToProductCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100215014_CorrectionForForeignKeys.cs" />
-    <Compile Include="Migrations\201612100215014_CorrectionForForeignKeys.Designer.cs">
-      <DependentUpon>201612100215014_CorrectionForForeignKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100235509_AddedMoneyColumnToProduct.cs" />
-    <Compile Include="Migrations\201612100235509_AddedMoneyColumnToProduct.Designer.cs">
-      <DependentUpon>201612100235509_AddedMoneyColumnToProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100245126_RemovedMoneyColumn.cs" />
-    <Compile Include="Migrations\201612100245126_RemovedMoneyColumn.Designer.cs">
-      <DependentUpon>201612100245126_RemovedMoneyColumn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201612100454008_AddHomeSplashImageUrl.cs" />
-    <Compile Include="Migrations\201612100454008_AddHomeSplashImageUrl.Designer.cs">
-      <DependentUpon>201612100454008_AddHomeSplashImageUrl.cs</DependentUpon>
+    <Compile Include="Migrations\201612172005459_AddHeaderToHomePageItem.cs" />
+    <Compile Include="Migrations\201612172005459_AddHeaderToHomePageItem.Designer.cs">
+      <DependentUpon>201612172005459_AddHeaderToHomePageItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\HomePageItem.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -403,41 +364,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201611250122072_AddServiceAreaAndZipcode.resx">
-      <DependentUpon>201611250122072_AddServiceAreaAndZipcode.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612171952217_Initial.resx">
+      <DependentUpon>201612171952217_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611250341377_AddStoreModels.resx">
-      <DependentUpon>201611250341377_AddStoreModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612030503292_AddStores.resx">
-      <DependentUpon>201612030503292_AddStores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612032307338_RemovedCountriesProvinces.resx">
-      <DependentUpon>201612032307338_RemovedCountriesProvinces.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612032326203_AddDescriptionAndImageUrlToProduct.resx">
-      <DependentUpon>201612032326203_AddDescriptionAndImageUrlToProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100034169_AddProductCategories.resx">
-      <DependentUpon>201612100034169_AddProductCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100200370_ChangeProductCategoryToOneToMany.resx">
-      <DependentUpon>201612100200370_ChangeProductCategoryToOneToMany.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100205260_AddedProductToProductCategories.resx">
-      <DependentUpon>201612100205260_AddedProductToProductCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100215014_CorrectionForForeignKeys.resx">
-      <DependentUpon>201612100215014_CorrectionForForeignKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100235509_AddedMoneyColumnToProduct.resx">
-      <DependentUpon>201612100235509_AddedMoneyColumnToProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100245126_RemovedMoneyColumn.resx">
-      <DependentUpon>201612100245126_RemovedMoneyColumn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201612100454008_AddHomeSplashImageUrl.resx">
-      <DependentUpon>201612100454008_AddHomeSplashImageUrl.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201612172005459_AddHeaderToHomePageItem.resx">
+      <DependentUpon>201612172005459_AddHeaderToHomePageItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

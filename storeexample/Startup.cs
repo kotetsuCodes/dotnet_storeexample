@@ -1,12 +1,12 @@
-﻿using donutrun.Models;
+﻿using storeexample.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using System;
 
-[assembly: OwinStartupAttribute(typeof(donutrun.Startup))]
-namespace donutrun
+[assembly: OwinStartupAttribute(typeof(storeexample.Startup))]
+namespace storeexample
 {
     public partial class Startup
     {

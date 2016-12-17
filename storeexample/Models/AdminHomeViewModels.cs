@@ -5,7 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
-namespace donutrun.Models
+namespace storeexample.Models
 {
     public class DashboardViewModel
     {

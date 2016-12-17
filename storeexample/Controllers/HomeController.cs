@@ -1,18 +1,17 @@
-﻿using donutrun.Models;
-using storeexample.Models;
+﻿using storeexample.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace donutrun.Controllers
+namespace storeexample.Controllers
 {
     public class HomeController : BaseController
     {
-        private DonutRunModel db = new DonutRunModel();
+        private StoreExampleModel db = new StoreExampleModel();
 
-        public ActionResult Index()
+        public ActionResult Index(HomePageViewModel model)
         {
             var store = db.Store.FirstOrDefault();
             if(store != null && string.IsNullOrEmpty(store.HomeSplashImageUrl) == false)
@@ -20,7 +19,9 @@ namespace donutrun.Controllers
                 ViewBag.HomeSplashImageUrl = store.HomeSplashImageUrl;
             }
 
-            return View();
+            model.HomePageItems = db.HomePageItems.ToList();
+
+            return View(model);
         }
 
         public ActionResult About()

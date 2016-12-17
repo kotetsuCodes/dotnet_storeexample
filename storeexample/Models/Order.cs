@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace donutrun.Models
+namespace storeexample.Models
 {
     public class Order
     {

@@ -1,4 +1,4 @@
-﻿namespace donutrun.Models
+﻿namespace storeexample.Models
 {
     public class ZipCode
     {

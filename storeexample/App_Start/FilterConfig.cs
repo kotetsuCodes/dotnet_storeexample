@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace donutrun
+namespace storeexample
 {
     public class FilterConfig
     {

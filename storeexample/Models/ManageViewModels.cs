@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace donutrun.Models
+namespace storeexample.Models
 {
     public class IndexViewModel
     {

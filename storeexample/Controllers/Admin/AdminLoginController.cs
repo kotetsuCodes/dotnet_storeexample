@@ -8,15 +8,15 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using donutrun.Models;
+using storeexample.Models;
 using System.Diagnostics;
 
-namespace donutrun.Controllers.Admin
+namespace storeexample.Controllers.Admin
 {
     [Authorize]
     public class AdminLoginController : Controller
     {
-        private DonutRunModel db = new DonutRunModel();
+        private StoreExampleModel db = new StoreExampleModel();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
