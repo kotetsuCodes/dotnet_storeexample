@@ -34,7 +34,7 @@ namespace storeexample.Models
         public virtual DbSet<OrderedProduct> OrderedProducts { get; set; }
 
         //home page
-        public virtual DbSet<HomePageItem> HomePageItems { get; set; }
+        public virtual DbSet<HomePageCrumb> HomePageCrumbs { get; set; }
 
     }
 

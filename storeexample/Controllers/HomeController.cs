@@ -19,7 +19,7 @@ namespace storeexample.Controllers
                 ViewBag.HomeSplashImageUrl = store.HomeSplashImageUrl;
             }
 
-            model.HomePageItems = db.HomePageItems.ToList();
+            model.HomePageCrumbs = db.HomePageCrumbs.ToList();
 
             return View(model);
         }

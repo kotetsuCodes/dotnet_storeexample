@@ -13,6 +13,6 @@ namespace storeexample.Models
 
     public class HomePageViewModel
     {
-        public IList<HomePageItem> HomePageItems { get; set; }
+        public IList<HomePageCrumb> HomePageCrumbs { get; set; }
     }
 }

@@ -215,16 +215,20 @@
     <Compile Include="Migrations\201612172005459_AddHeaderToHomePageItem.Designer.cs">
       <DependentUpon>201612172005459_AddHeaderToHomePageItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612172032507_RenamedHomePageItemToCrumbs.cs" />
+    <Compile Include="Migrations\201612172032507_RenamedHomePageItemToCrumbs.Designer.cs">
+      <DependentUpon>201612172032507_RenamedHomePageItemToCrumbs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\HomePageItem.cs" />
+    <Compile Include="Models\HomePageCrumb.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\DonutRunModel.cs" />
+    <Compile Include="Models\StoreExampleModel.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612172005459_AddHeaderToHomePageItem.resx">
       <DependentUpon>201612172005459_AddHeaderToHomePageItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612172032507_RenamedHomePageItemToCrumbs.resx">
+      <DependentUpon>201612172032507_RenamedHomePageItemToCrumbs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
