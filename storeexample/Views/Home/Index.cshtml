@@ -29,9 +29,9 @@ else
         {
             <div class="col-md-4">
                 <div class="crumbImageContainer">
-                    <img class="crumbImage" src="@Url.Content(crumb.ImageUrl)"/>
+                    <img class="crumbImage" src="@Url.Content(crumb.ImageUrl)" />
                 </div>
-                
+
                 <div class="crumbContentArea">
                     <h2>@crumb.Heading</h2>
                     <p>
@@ -42,3 +42,13 @@ else
         }
     }
 </div>
+
+@if (Model.ShowZipCodeForm)
+{
+    <div id="zipCodeCheck">
+        @Html.Partial("ZipCodeCheck")
+    </div>
+
+
+
+}

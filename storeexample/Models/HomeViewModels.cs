@@ -14,5 +14,8 @@ namespace storeexample.Models
     public class HomePageViewModel
     {
         public IList<HomePageCrumb> HomePageCrumbs { get; set; }
+        public bool ShowZipCodeForm { get; set; }
+        public string ZipCode { get; set; }
+        public string ZipCodeMessage { get; set; }
     }
 }
