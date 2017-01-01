@@ -1,0 +1,54 @@
+﻿@model storeexample.Models.HomePageViewModel
+
+@if (Model.ShowZipCodeForm)
+{
+    <div class="row">
+        <div class="col-md-12">
+
+            @using (Ajax.BeginForm("VerifyZipCode", "Home", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "zipCodeCheck" }, new { @class = "form-inline text-center" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ZipCode, new { @class="sr-only" })
+                    @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your zipcode" } })
+                </div>
+
+                <input type="submit" value="Check Zip" class="btn btn-primary" />
+
+
+            }
+
+            <span id="zipResult">@Model.ZipCodeMessage</span>
+
+        </div>
+    </div>
+}
+
+@if (Model.ReadyToOrder)
+{
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-12">
+            <div class="row">
+
+                @foreach (var product in Model.Products)
+                {
+                    <div class="col-md-6">
+                        <div class="productImageContainer">
+                            <img class="productImage" src="@Url.Content(product.ImageUrl)" />
+                        </div>
+
+                        <div class="productContentArea">
+                            <h2>@product.DisplayName - @product.BasePrice</h2>
+                            <p>
+                                @product.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            Order Cart
+        </div>
+    </div>
+}

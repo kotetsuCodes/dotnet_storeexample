@@ -27,5 +27,6 @@ namespace storeexample.Models
         public virtual List<Product> Products { get; set; }
         public virtual List<Driver> Drivers { get; set; }
         public virtual List<Contact> ContactInfo { get; set; }
+        public string ZipCodeNotInServiceMessage { get; set; }
     }
 }

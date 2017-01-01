@@ -46,7 +46,7 @@ namespace storeexample.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl")] Store store)
+        public ActionResult Create([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl,ZipCodeNotInServiceMessage")] Store store)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace storeexample.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl")] Store store)
+        public ActionResult Edit([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl,ZipCodeNotInServiceMessage")] Store store)
         {
             if (ModelState.IsValid)
             {

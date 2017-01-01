@@ -52,11 +52,38 @@ namespace storeexample.Controllers
         }
 
         [HttpPost]
-        public ActionResult VerifyZipCode(string zipcode)
+        public ActionResult VerifyZipCode(HomePageViewModel model)
         {
-            var zipcodes = db.ZipCodes.Where(z => z.IsServiced && z.Zip == zipcode);
+            if (!ModelState.IsValid)
+            {
+                return View("_OrderProducts", model);
+            }
 
-            return PartialView("ZipCodeCheck");
+            model.ShowZipCodeForm = true;
+
+            ViewBag.ZipCode = model.ZipCode;
+            int parsedZip = int.Parse(model.ZipCode);
+
+            var zipcode = db.ZipCodes.SingleOrDefault(z => z.Zip == parsedZip);
+
+            if(zipcode == null)
+            {
+                db.ZipCodes.Add(new ZipCode() { Zip = parsedZip, IsServiced = false });
+                db.SaveChanges();
+                model.ZipCodeMessage = db.Store.First().ZipCodeNotInServiceMessage;
+            }
+            else if(zipcode.IsServiced)
+            {
+                model.ReadyToOrder = true;
+                model.ZipCodeMessage = "Let's order!";
+                model.Products = db.Products.Where(p => p.IsActive).ToList();
+            }
+            else
+            {
+                model.ZipCodeMessage = db.Store.First().ZipCodeNotInServiceMessage;
+            }
+
+            return PartialView("_OrderProducts", model);
         }
     }
 }

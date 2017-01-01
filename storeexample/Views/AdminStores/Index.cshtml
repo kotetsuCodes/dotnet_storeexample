@@ -36,6 +36,9 @@
         <th>
             @Html.DisplayNameFor(model => model.HomeSplashImageUrl)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCodeNotInServiceMessage)
+        </th>
         <th></th>
     </tr>
 
@@ -67,6 +70,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.HomeSplashImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCodeNotInServiceMessage)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.StoreId }) |

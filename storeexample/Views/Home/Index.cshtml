@@ -18,7 +18,7 @@ else
 }
 
 
-<div class="row">
+<div class="row hidden-xs">
     @if (Model.HomePageCrumbs.Count() == 0)
     {
         <span>Content coming soon!</span>
@@ -27,7 +27,7 @@ else
     {
         foreach (var crumb in Model.HomePageCrumbs)
         {
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-4">
                 <div class="crumbImageContainer">
                     <img class="crumbImage" src="@Url.Content(crumb.ImageUrl)" />
                 </div>
@@ -43,12 +43,7 @@ else
     }
 </div>
 
-@if (Model.ShowZipCodeForm)
-{
-    <div id="zipCodeCheck">
-        @Html.Partial("ZipCodeCheck")
-    </div>
+<div id="zipCodeCheck">
+    @Html.Partial("_OrderProducts")
+</div>
 
-
-
-}

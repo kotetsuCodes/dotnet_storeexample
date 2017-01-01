@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201612172032507_RenamedHomePageItemToCrumbs.Designer.cs">
       <DependentUpon>201612172032507_RenamedHomePageItemToCrumbs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612240228188_AddZipCodeNotInServiceMessage.cs" />
+    <Compile Include="Migrations\201612240228188_AddZipCodeNotInServiceMessage.Designer.cs">
+      <DependentUpon>201612240228188_AddZipCodeNotInServiceMessage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
@@ -348,7 +352,7 @@
     <Content Include="Views\AdminContacts\Details.cshtml" />
     <Content Include="Views\AdminContacts\Edit.cshtml" />
     <Content Include="Views\AdminContacts\Index.cshtml" />
-    <Content Include="Views\Home\ZipCodeCheck.cshtml" />
+    <Content Include="Views\Home\_OrderProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -379,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612172032507_RenamedHomePageItemToCrumbs.resx">
       <DependentUpon>201612172032507_RenamedHomePageItemToCrumbs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612240228188_AddZipCodeNotInServiceMessage.resx">
+      <DependentUpon>201612240228188_AddZipCodeNotInServiceMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
