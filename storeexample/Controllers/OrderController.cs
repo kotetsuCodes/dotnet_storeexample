@@ -68,5 +68,42 @@ namespace storeexample.Controllers
 
             return PartialView("_OrderCart", model);
         }
+
+        [HttpPut]
+        public ActionResult RemoveProductFromCart(int orderId, int productId)
+        {
+            var order = db.Orders.SingleOrDefault(o => o.OrderId == orderId && o.Status == OrderStatus.Initial);
+            var product = db.Products.SingleOrDefault(p => p.ProductId == productId);
+
+            if (order == null)
+            {
+                throw new Exception("Invalid order");
+            }
+            if (product == null)
+            {
+                throw new Exception("Invalid product");
+            }
+
+            var orderedProduct = order.OrderedProducts.SingleOrDefault(op => op.ProductId == product.ProductId);
+
+            if (orderedProduct != null)
+            {
+                if (orderedProduct.QuantityOrdered == 1)
+                {
+                    db.OrderedProducts.Remove(orderedProduct);
+                }
+                else
+                {
+                    orderedProduct.QuantityOrdered--;
+                }
+
+                db.SaveChanges();
+            }
+
+            var model = new OrderViewModel();
+            model.Order = order;
+
+            return PartialView("_OrderCart", model);
+        }
     }
 }

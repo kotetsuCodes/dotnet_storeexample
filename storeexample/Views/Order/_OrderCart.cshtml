@@ -2,12 +2,9 @@
 
 <h3>Order Cart</h3>
 
-@if (Model.Order.OrderedProducts != null)
+@foreach (var orderedProduct in Model.Order.OrderedProducts)
 {
-    foreach (var orderedProduct in Model.Order?.OrderedProducts)
-    {
-        <div>
-            <span>@orderedProduct.Product.DisplayName - @orderedProduct.QuantityOrdered</span>
-        </div>
-    }
+    <div>
+        <span>@orderedProduct.Product.DisplayName - @orderedProduct.QuantityOrdered</span>
+    </div>
 }

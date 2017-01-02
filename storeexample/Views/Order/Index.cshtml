@@ -26,6 +26,11 @@
                         {
                             <input type="submit" value="+" class="btn btn-primary" />
                         }
+
+                        @using (Ajax.BeginForm("RemoveProductFromCart", "Order", new { orderId = Model.Order.OrderId, productId = product.ProductId }, new AjaxOptions() { HttpMethod = "PUT", UpdateTargetId = "orderCart" }, new { @class = "form-inline text-center" }))
+                        {
+                            <input type="submit" value="-" class="btn btn-primary" />
+                        }
                     </div>
                 </div>
             }

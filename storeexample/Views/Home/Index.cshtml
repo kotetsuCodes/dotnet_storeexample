@@ -6,14 +6,12 @@
 @if (!string.IsNullOrEmpty(ViewBag.HomeSplashImageUrl))
 {
     <div class="jumbotron" style="background-image: url(@Url.Content(ViewBag.HomeSplashImageUrl));">
-        @*<img src="@Url.Content(ViewBag.HomeSplashImageUrl)" alt="image"  style="width:100%; object-fit: contain;"/>*@
     </div>
 }
 else
 {
     <div class="jumbotron">
         No splash image selected
-        @*<img src="@Url.Content(ViewBag.HomeSplashImageUrl)" alt="image"  style="width:100%; object-fit: contain;"/>*@
     </div>
 }
 
