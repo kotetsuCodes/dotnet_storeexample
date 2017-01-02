@@ -202,6 +202,7 @@
     <Compile Include="Controllers\Admin\AdminZipCodesController.cs" />
     <Compile Include="Controllers\Admin\BaseAdminController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -240,6 +241,7 @@
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CheckoutViewModels.cs" />
     <Compile Include="Models\HomePageCrumb.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\OrderViewModels.cs" />
@@ -369,6 +371,7 @@
     <Content Include="Views\Home\_OrderProducts.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_OrderCart.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

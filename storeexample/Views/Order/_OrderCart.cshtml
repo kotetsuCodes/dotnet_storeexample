@@ -7,4 +7,15 @@
     <div>
         <span>@orderedProduct.Product.DisplayName - @orderedProduct.QuantityOrdered</span>
     </div>
+
+    
 }
+
+<div>
+    @Model.Order.OrderId
+    @using (Html.BeginForm("Index", "Checkout", new { orderId = Model.Order.OrderId }, FormMethod.Get, new { @class = "form-inline text-center" }))
+    {
+        <input type="submit" value="Checkout" class="btn btn-primary" />
+    }
+</div>
+
