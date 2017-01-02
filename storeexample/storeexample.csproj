@@ -204,6 +204,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,12 +224,25 @@
     <Compile Include="Migrations\201612240228188_AddZipCodeNotInServiceMessage.Designer.cs">
       <DependentUpon>201612240228188_AddZipCodeNotInServiceMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701020013517_CorrectOrderedProducts.cs" />
+    <Compile Include="Migrations\201701020013517_CorrectOrderedProducts.Designer.cs">
+      <DependentUpon>201701020013517_CorrectOrderedProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701020348590_UpdatedScheduledDeliveryDateToNullable.cs" />
+    <Compile Include="Migrations\201701020348590_UpdatedScheduledDeliveryDateToNullable.Designer.cs">
+      <DependentUpon>201701020348590_UpdatedScheduledDeliveryDateToNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701020441390_UpdatedOrderedProductsToVirtual.cs" />
+    <Compile Include="Migrations\201701020441390_UpdatedOrderedProductsToVirtual.Designer.cs">
+      <DependentUpon>201701020441390_UpdatedOrderedProductsToVirtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\HomePageCrumb.cs" />
     <Compile Include="Models\HomeViewModels.cs" />
+    <Compile Include="Models\OrderViewModels.cs" />
     <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -353,6 +367,8 @@
     <Content Include="Views\AdminContacts\Edit.cshtml" />
     <Content Include="Views\AdminContacts\Index.cshtml" />
     <Content Include="Views\Home\_OrderProducts.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\_OrderCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +402,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612240228188_AddZipCodeNotInServiceMessage.resx">
       <DependentUpon>201612240228188_AddZipCodeNotInServiceMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701020013517_CorrectOrderedProducts.resx">
+      <DependentUpon>201701020013517_CorrectOrderedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701020348590_UpdatedScheduledDeliveryDateToNullable.resx">
+      <DependentUpon>201701020348590_UpdatedScheduledDeliveryDateToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701020441390_UpdatedOrderedProductsToVirtual.resx">
+      <DependentUpon>201701020441390_UpdatedOrderedProductsToVirtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

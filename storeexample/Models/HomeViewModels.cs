@@ -23,6 +23,10 @@ namespace storeexample.Models
 
         public bool ReadyToOrder { get; set; }
 
+        public int ProductId { get; set; }
+
+        public Order Order { get; set; }
+
         public IList<Product> Products { get; set; }
         public IList<OrderedProduct> OrderedProducts { get; set; }
 

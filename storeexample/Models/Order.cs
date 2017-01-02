@@ -8,7 +8,7 @@ namespace storeexample.Models
         public int OrderId { get; set; }
 
         public DateTime DateOrdered { get; set; }
-        public DateTime ScheduledDeliveryDate { get; set; }
+        public DateTime? ScheduledDeliveryDate { get; set; }
         public OrderStatus Status { get; set; }
         public RecurFrequency RecurFrequency { get; set; }
         public DayOfWeek WeeklyRecurDay { get; set; }
@@ -23,7 +23,7 @@ namespace storeexample.Models
         public string State { get; set; }
         public ZipCode ZipCode { get; set; }
 
-        List<OrderedProduct> OrderedProducts { get; set; }
+        public virtual List<OrderedProduct> OrderedProducts { get; set; }
     }
 
     public enum OrderStatus
@@ -47,6 +47,7 @@ namespace storeexample.Models
 
     public enum RecurFrequency
     {
+        None,
         Daily,
         Weekly,
         Monthly

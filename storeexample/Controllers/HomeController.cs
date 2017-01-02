@@ -74,16 +74,23 @@ namespace storeexample.Controllers
             }
             else if(zipcode.IsServiced)
             {
-                model.ReadyToOrder = true;
-                model.ZipCodeMessage = "Let's order!";
-                model.Products = db.Products.Where(p => p.IsActive).ToList();
+                var order = db.Orders.Add(new Order()
+                {
+                    ZipCode = zipcode,
+                    DateOrdered = DateTime.Now,
+                    Status = OrderStatus.Initial
+                });
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index", "Order", new { orderId = order.OrderId });
             }
             else
             {
                 model.ZipCodeMessage = db.Store.First().ZipCodeNotInServiceMessage;
             }
 
-            return PartialView("_OrderProducts", model);
+            return View(model);
         }
     }
 }

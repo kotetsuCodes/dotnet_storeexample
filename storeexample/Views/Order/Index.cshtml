@@ -1,0 +1,41 @@
+﻿@model storeexample.Models.OrderViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="row">
+
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-md-6">
+                    <div class="productImageContainer">
+                        <img class="productImage" src="@Url.Content(product.ImageUrl)" />
+                    </div>
+
+                    <div class="productContentArea">
+                        <h2>@product.DisplayName - @product.BasePrice</h2>
+                        <p>
+                            @product.Description
+                        </p>
+                    </div>
+                    <div>
+                        @using (Ajax.BeginForm("AddProductToCart", "Order", new { orderId = Model.Order.OrderId, productId = product.ProductId }, new AjaxOptions() { HttpMethod = "PUT", UpdateTargetId = "orderCart" }, new { @class = "form-inline text-center" }))
+                        {
+                            <input type="submit" value="+" class="btn btn-primary" />
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div id="orderCart">
+           @Html.Partial("_OrderCart")
+        </div>
+    </div>
+</div>
+
