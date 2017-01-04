@@ -30,5 +30,22 @@ namespace storeexample.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult ProcessOrder(CheckoutViewModel model)
+        {
+            //var order = db.Orders.SingleOrDefault(o => o.OrderId == orderId);
+            //if (order == null)
+            //{
+            //    throw new Exception("Invalid Order");
+            //}
+
+            if (ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return View(model);
+        }
     }
 }

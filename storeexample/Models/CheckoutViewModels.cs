@@ -15,16 +15,20 @@ namespace storeexample.Models
         [Required]
         public string Name { get; set; }
         [Required]
+        [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
         [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
         public string DeliveryAddress { get; set; }
         [Required]
+        [DataType(DataType.PostalCode)]
         public int ZipCode { get; set; }
         [Required]
         public string CityState { get; set; }
         [Display(Name = "Special Instructions")]
+        [DataType(DataType.MultilineText)]
         public string SpecialInstructions { get; set; }
         [Display(Name = "Delivery Day")]
         [Required]
