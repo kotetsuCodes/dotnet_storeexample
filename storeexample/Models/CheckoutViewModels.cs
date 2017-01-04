@@ -9,6 +9,9 @@ namespace storeexample.Models
     public class CheckoutViewModel
     {
         public Order Order { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal OrderTotal { get; set; }
+
         [Required]
         public string Name { get; set; }
         [Required]

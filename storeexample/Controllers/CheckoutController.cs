@@ -20,9 +20,12 @@ namespace storeexample.Controllers
                 throw new Exception("Invalid Order");
             }
 
+            decimal orderTotal = order.OrderedProducts.Sum(op => op.QuantityOrdered * op.Product.BasePrice * op.Product.BaseQuantity);
+
             var model = new CheckoutViewModel()
             {
-                Order = order
+                Order = order,
+                OrderTotal = orderTotal
             };
 
             return View(model);
