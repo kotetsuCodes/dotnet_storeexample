@@ -22,10 +22,25 @@ namespace storeexample.Controllers
 
             decimal orderTotal = order.OrderedProducts.Sum(op => op.QuantityOrdered * op.Product.BasePrice * op.Product.BaseQuantity);
 
+            List<string> availableDates = new List<string>();
+            List<string> availableHours = new List<string>();
+
+            for(var i = 1; i < 21; i++)
+            {
+                availableDates.Add($"{DateTime.Now.AddDays(i).ToShortDateString()} {DateTime.Now.AddDays(i).DayOfWeek}");
+            }
+
+            for(var i = 0; i < 24; i++)
+            {
+                availableHours.Add(DateTime.Now.AddHours(i).ToShortTimeString());
+            }
+
             var model = new CheckoutViewModel()
             {
                 Order = order,
-                OrderTotal = orderTotal
+                OrderTotal = orderTotal,
+                DeliveryDay = availableDates.Select(ad => new SelectListItem() { Text = ad, Value = ad }).ToList(),
+                DeliveryTime = availableHours.Select(ah => new SelectListItem() { Text = ah, Value = ah }).ToList()
             };
 
             return View(model);

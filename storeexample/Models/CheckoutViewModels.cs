@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace storeexample.Models
 {
@@ -32,9 +33,9 @@ namespace storeexample.Models
         public string SpecialInstructions { get; set; }
         [Display(Name = "Delivery Day")]
         [Required]
-        public string DeliveryDay { get; set; }
+        public List<SelectListItem> DeliveryDay { get; set; }
         [Display(Name = "Delivery Time")]
         [Required]
-        public string DeliveryTime { get; set; }
+        public List<SelectListItem> DeliveryTime { get; set; }
     }
 }
