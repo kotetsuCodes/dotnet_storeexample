@@ -42,21 +42,36 @@ else
 </div>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
 
-        @using (Html.BeginForm("VerifyZipCode", "Home", FormMethod.Post, new { @class = "form-inline text-center" }))
+        @using (Ajax.BeginForm("VerifyZipCode", "Home", new {  },  new AjaxOptions() { HttpMethod = "POST", OnSuccess = "updateZipCodeMessage(data);", OnFailure = "updateZipCodeMessage(data);" }, new { @class = "form-inline text-center" }))
         {
             <div class="form-group">
                 @Html.LabelFor(model => model.ZipCode, new { @class = "sr-only" })
                 @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your zipcode" } })
             </div>
 
-                <input type="submit" value="Check Zip" class="btn btn-primary" />
-
-
+            <button type="submit" class="btn btn-primary">
+                <span id="zipResultText"></span>
+                <i id="zipResultIcon" class="fa fa-search"></i>
+            </button>
         }
-
-        <span id="zipResult">@Model.ZipCodeMessage</span>
-
     </div>
 </div>
+
+<script>
+    function updateZipCodeMessage(data) {
+        $('#zipResultText').text(data.Message);
+
+        $('#zipResultIcon').removeClass('fa-search');
+
+        if (data.Success) {
+            $('#zipResultIcon').addClass('fa-arrow-circle-right')
+            setTimeout(() => {
+                window.location = `@Url.Action("Index", "Order")?orderId=${data.OrderId}`;
+            }, 3000);
+        } else {
+            $('zipResultIcon').addClass("fa-warning")
+        }
+    }
+</script>

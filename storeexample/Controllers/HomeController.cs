@@ -48,43 +48,34 @@ namespace storeexample.Controllers
         }
 
         [HttpPost]
-        public ActionResult VerifyZipCode(HomePageViewModel model)
+        public ActionResult VerifyZipCode(string zipCode)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("_OrderProducts", model);
-            }
-
-            model.ShowZipCodeForm = true;
-
-            ViewBag.ZipCode = model.ZipCode;
-
             string city = null;
             string state = null;
+
+            var request = Request;
 
             int parsedZip;
 
             //check if zipcode is a valid integer
-            if (int.TryParse(model.ZipCode, out parsedZip) == false)
+            if (int.TryParse(zipCode, out parsedZip) == false)
             {
-                model.ZipCodeMessage = "Invalid ZipCode";
-                return View("Index", model);
+                return new JsonResult() { Data = new { Success = false, Message = "Invalid ZipCode" } };
             }
 
             //get city and state from geocode API
             var geoCoder = new GoogleGeocoder()
             {
-                ComponentFilters = new List<GoogleComponentFilter> { new GoogleComponentFilter("country", "US"), new GoogleComponentFilter("postal_code", model.ZipCode) }
+                ComponentFilters = new List<GoogleComponentFilter> { new GoogleComponentFilter("country", "US"), new GoogleComponentFilter("postal_code", zipCode) }
             };
 
             try
             {
-                GoogleAddress address = geoCoder.Geocode(model.ZipCode).FirstOrDefault();
+                GoogleAddress address = geoCoder.Geocode(zipCode).FirstOrDefault();
 
                 if(address == null)
                 {
-                    model.ZipCodeMessage = "Invalid ZipCode";
-                    return View("Index", model);
+                    return new JsonResult() { Data = new { Success = false, Message = "Invalid ZipCode" } };
                 }
 
                 city = address.Components.Single(x => x.Types.Any(t => t == GoogleAddressType.Locality)).ShortName;
@@ -93,10 +84,9 @@ namespace storeexample.Controllers
             }
             catch
             {
-                model.ZipCodeMessage = "Invalid ZipCode";
-                return View("Index", model);
+                return new JsonResult() { Data = new { Success = false, Message = "Invalid ZipCode" } };
             }
-                
+
             //check if zip is serviced
             var zipcode = db.ZipCodes.SingleOrDefault(z => z.Zip == parsedZip);
             
@@ -104,7 +94,7 @@ namespace storeexample.Controllers
             {
                 db.ZipCodes.Add(new ZipCode() { Zip = parsedZip, IsServiced = false });
                 db.SaveChanges();
-                model.ZipCodeMessage = db.Store.First().ZipCodeNotInServiceMessage;
+                return new JsonResult() { Data = new { Success = false, Message = db.Store.First().ZipCodeNotInServiceMessage } };
             }
             else if (zipcode.IsServiced)
             {
@@ -119,14 +109,13 @@ namespace storeexample.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("Index", "Order", new { orderId = order.OrderId });
+                return new JsonResult() { Data = new { Success = true, Message = "Let's Order!", OrderId = order.OrderId } };
             }
             else
             {
-                model.ZipCodeMessage = db.Store.First().ZipCodeNotInServiceMessage;
+                return new JsonResult() { Data = new { Success = false, Message = db.Store.First().ZipCodeNotInServiceMessage } };
             }
 
-            return View("Index", model);
         }
     }
 }
