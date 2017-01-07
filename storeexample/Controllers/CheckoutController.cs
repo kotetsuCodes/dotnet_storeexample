@@ -46,7 +46,8 @@ namespace storeexample.Controllers
             {
                 Order = order,
                 DeliveryDay = availableDates.Select(ad => new SelectListItem() { Text = ad, Value = ad }).ToList(),
-                DeliveryTime = availableHours.Select(ah => new SelectListItem() { Text = ah, Value = ah }).ToList()
+                DeliveryTime = availableHours.Select(ah => new SelectListItem() { Text = ah, Value = ah }).ToList(),
+                CityState = $"{order.City}, {order.State}"
             };
 
             return View(model);

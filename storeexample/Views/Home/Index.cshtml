@@ -17,7 +17,7 @@ else
 
 
 <div class="row hidden-xs">
-    @if (Model.HomePageCrumbs.Count() == 0)
+    @if (Model.HomePageCrumbs == null || Model.HomePageCrumbs.Count() == 0)
     {
         <span>Content coming soon!</span>
     }
@@ -44,8 +44,8 @@ else
 <div class="row">
     <div class="col-md-12">
 
-        @using (Html.BeginForm("VerifyZipCode", "Home", new { @class = "form-inline text-center" }))
-            {
+        @using (Html.BeginForm("VerifyZipCode", "Home", FormMethod.Post, new { @class = "form-inline text-center" }))
+        {
             <div class="form-group">
                 @Html.LabelFor(model => model.ZipCode, new { @class = "sr-only" })
                 @Html.EditorFor(model => model.ZipCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter your zipcode" } })
