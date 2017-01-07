@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace storeexample.Models
 {
@@ -13,15 +14,23 @@ namespace storeexample.Models
         public RecurFrequency RecurFrequency { get; set; }
         public DayOfWeek WeeklyRecurDay { get; set; }
         public int MonthlyRecurDay { get; set; }
-        public bool IsRecurring { get; set; }        
+        public bool IsRecurring { get; set; }
+
+        [ForeignKey("Customer")]
+        public int? CustomerId { get; set; }
 
         //Order Info
+        public decimal DeliveryCharge { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal GrandTotal { get; set; }
+
         public string DeliveryAddress1 { get; set; }
         public string DeliveryAddress2 { get; set; }
         public string DeliveryAddress3 { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public ZipCode ZipCode { get; set; }
+        public virtual ZipCode ZipCode { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public virtual List<OrderedProduct> OrderedProducts { get; set; }
     }

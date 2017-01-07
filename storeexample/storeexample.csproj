@@ -49,6 +49,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Stripe, Version=1.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stripe.1.12.0\lib\net40\Stripe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -237,6 +245,26 @@
     <Compile Include="Migrations\201701020441390_UpdatedOrderedProductsToVirtual.Designer.cs">
       <DependentUpon>201701020441390_UpdatedOrderedProductsToVirtual.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701070311296_AddedDeliveryFeeToStore.cs" />
+    <Compile Include="Migrations\201701070311296_AddedDeliveryFeeToStore.Designer.cs">
+      <DependentUpon>201701070311296_AddedDeliveryFeeToStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701070425131_AddTotalsToOrder.cs" />
+    <Compile Include="Migrations\201701070425131_AddTotalsToOrder.Designer.cs">
+      <DependentUpon>201701070425131_AddTotalsToOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701070450543_AttachedOrdersToCustomers.cs" />
+    <Compile Include="Migrations\201701070450543_AttachedOrdersToCustomers.Designer.cs">
+      <DependentUpon>201701070450543_AttachedOrdersToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701070500536_FixedCustomerOrderRelationship.cs" />
+    <Compile Include="Migrations\201701070500536_FixedCustomerOrderRelationship.Designer.cs">
+      <DependentUpon>201701070500536_FixedCustomerOrderRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701070524185_UPdatedCustomer.cs" />
+    <Compile Include="Migrations\201701070524185_UPdatedCustomer.Designer.cs">
+      <DependentUpon>201701070524185_UPdatedCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
@@ -372,6 +400,7 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\_OrderCart.cshtml" />
     <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Checkout\OrderComplete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +443,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701020441390_UpdatedOrderedProductsToVirtual.resx">
       <DependentUpon>201701020441390_UpdatedOrderedProductsToVirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701070311296_AddedDeliveryFeeToStore.resx">
+      <DependentUpon>201701070311296_AddedDeliveryFeeToStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701070425131_AddTotalsToOrder.resx">
+      <DependentUpon>201701070425131_AddTotalsToOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701070450543_AttachedOrdersToCustomers.resx">
+      <DependentUpon>201701070450543_AttachedOrdersToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701070500536_FixedCustomerOrderRelationship.resx">
+      <DependentUpon>201701070500536_FixedCustomerOrderRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701070524185_UPdatedCustomer.resx">
+      <DependentUpon>201701070524185_UPdatedCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,15 +13,22 @@
 
 <div class="row">
     <div class="col-sm-12">
+        <h3>(@Model.Order.OrderedProducts.Count) Items: @Html.DisplayFor(model => model.Order.SubTotal)</h3>
+        @if (Model.Order.DeliveryCharge > 0)
+        {
+            <h3>Delivery Charge: @Html.DisplayFor(model => model.Order.DeliveryCharge)</h3>
+        }
         <h3>
-            Order Total: @Html.DisplayFor(model => model.OrderTotal)
+            Order Total: @Html.DisplayFor(model => model.Order.GrandTotal)
         </h3>
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-6">
-        @using (Html.BeginForm("ProcessOrder", "Checkout", new { orderId = Model.Order.OrderId }, FormMethod.Post, new { }))
+
+
+        @using (Html.BeginForm("SubmitPayment", "Checkout", new { orderId = Model.Order.OrderId }, FormMethod.Post, new { }))
         {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -80,11 +87,15 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Submit Order" class="btn btn-default" />
-                </div>
-            </div>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_"
+                    data-amount="@Model.Order.GrandTotal.ToString().Replace(".", "")"
+                    data-name="Stripe.com"
+                    data-description="Widget"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto"
+                    data-zip-code="true">
+            </script>
         }
     </div>
     <div class="col-sm-6">

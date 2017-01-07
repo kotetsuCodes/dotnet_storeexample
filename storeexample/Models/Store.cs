@@ -16,6 +16,7 @@ namespace storeexample.Models
         public bool IsOpenOnHolidays { get; set; }
         public string HolidayMessage { get; set; }
         public bool DeliveryAvailable { get; set; }
+        public decimal DeliveryFee { get; set; }
 
         public bool IsMultiNational { get; set; }
         public bool IsMultiProvince { get; set; }

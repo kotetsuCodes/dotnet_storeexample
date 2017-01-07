@@ -18,6 +18,6 @@ namespace storeexample.Models
         public string Phone { get; set; }
 
         
-        List<Order> Orders { get; set; }
+        public virtual List<Order> Orders { get; set; }
     }
 }
