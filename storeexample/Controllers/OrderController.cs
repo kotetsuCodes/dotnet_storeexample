@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace storeexample.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         private StoreExampleModel db = new StoreExampleModel();
 

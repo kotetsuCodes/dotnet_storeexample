@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace storeexample.Controllers
 {
-    public class CheckoutController : Controller
+    public class CheckoutController : BaseController
     {
         private StoreExampleModel db = new StoreExampleModel();
 
@@ -26,20 +26,40 @@ namespace storeexample.Controllers
             order.DeliveryCharge = deliveryFee;
             order.SubTotal = orderTotal;
             order.GrandTotal = Math.Round(orderTotal + deliveryFee, 2);
-            
+
             db.SaveChanges();
 
             List<string> availableDates = new List<string>();
             List<string> availableHours = new List<string>();
 
+            if (DateTime.Now.Hour < db.Store.First().DeliveryHourEnd)
+            {
+                availableDates.Add($"{DateTime.Now.ToShortDateString()} {DateTime.Now.DayOfWeek}");
+
+                for (var i = db.Store.First().DeliveryHourStart; i <= db.Store.First().DeliveryHourEnd; i++)
+                {
+                    if (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 0, 0) > DateTime.Now.AddMinutes(15))
+                    {
+                        availableHours.Add(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 0, 0).ToShortTimeString());
+                    }
+                    if (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 30, 0) > DateTime.Now.AddMinutes(15))
+                    {
+                        availableHours.Add(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 30, 0).ToShortTimeString());
+                    }
+                }
+            }
+            else
+            {
+                for (var i = db.Store.First().DeliveryHourStart; i <= db.Store.First().DeliveryHourEnd; i++)
+                {
+                    availableHours.Add(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 0, 0).ToShortTimeString());
+                    availableHours.Add(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 30, 0).ToShortTimeString());
+                }
+            }
+
             for (var i = 1; i < 21; i++)
             {
                 availableDates.Add($"{DateTime.Now.AddDays(i).ToShortDateString()} {DateTime.Now.AddDays(i).DayOfWeek}");
-            }
-
-            for (var i = 0; i < 24; i++)
-            {
-                availableHours.Add(DateTime.Now.AddHours(i).ToShortTimeString());
             }
 
             var model = new CheckoutViewModel()
@@ -51,6 +71,38 @@ namespace storeexample.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public JsonResult GetDeliveryTimes(string deliveryDay)
+        {
+            var deliveryTimes = new List<string>();
+
+            if (DateTime.Parse(deliveryDay) > DateTime.Today)
+            {
+                for (var i = db.Store.First().DeliveryHourStart; i <= db.Store.First().DeliveryHourEnd; i++)
+                {
+                    deliveryTimes.Add($"{i}:00");
+                    deliveryTimes.Add($"{i}:30");
+                }
+            }
+            else
+            {
+                for (var i = db.Store.First().DeliveryHourStart; i <= db.Store.First().DeliveryHourEnd; i++)
+                {
+                    if (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 0, 0) > DateTime.Now.AddMinutes(15))
+                    {
+                        deliveryTimes.Add($"{i}:00");
+                    }
+                    if (new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, i, 30, 0) > DateTime.Now.AddMinutes(15))
+                    {
+                        deliveryTimes.Add($"{i}:30");
+                    }
+                }
+            }
+
+
+            return Json(deliveryTimes);
         }
 
         [HttpPost]

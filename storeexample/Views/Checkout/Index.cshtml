@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row">
@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h3>(@Model.Order.OrderedProducts.Count) Items: @Html.DisplayFor(model => model.Order.SubTotal)</h3>
+        <h3>Items (@Model.Order.OrderedProducts.Count): @Html.DisplayFor(model => model.Order.SubTotal)</h3>
         @if (Model.Order.DeliveryCharge > 0)
         {
             <h3>Delivery Charge: @Html.DisplayFor(model => model.Order.DeliveryCharge)</h3>
@@ -25,15 +25,15 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-8 col-xs-12">
 
 
-        @using (Html.BeginForm("SubmitPayment", "Checkout", new { orderId = Model.Order.OrderId }, FormMethod.Post, new { }))
+        @using (Html.BeginForm("SubmitPayment", "Checkout", new { orderId = Model.Order.OrderId }, FormMethod.Post, new { @class = "form-horizontal" }))
         {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
+                <div class="col-sm-10">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
+                <div class="col-sm-10">
                     @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                 </div>
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
+                <div class="col-sm-10">
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                 </div>
@@ -57,7 +57,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.DeliveryAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
+                <div class="col-sm-10">
                     @Html.EditorFor(model => model.DeliveryAddress, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
                 </div>
@@ -65,48 +65,77 @@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.CityState, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
-                    @Html.EditorFor(model => model.CityState, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="col-sm-10">
+                    @Html.EditorFor(model => model.CityState, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                     @Html.ValidationMessageFor(model => model.CityState, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.SpecialInstructions, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
-                    @Html.TextAreaFor(model => model.SpecialInstructions, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(model => model.SpecialInstructions, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.SpecialInstructions, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.DeliveryDay, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
-                    @Html.DropDownList("delivery_day", Model.DeliveryDay, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="col-sm-10">
+                    @Html.DropDownList("delivery_day", Model.DeliveryDay, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.DeliveryDay, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.DeliveryTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-6">
-                    @Html.DropDownList("delivery_time", Model.DeliveryTime, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="col-sm-10">
+                    @Html.DropDownList("delivery_time", Model.DeliveryTime, new { @class = "form-control", onChange = "getAvailableTimes();" })
                     @Html.ValidationMessageFor(model => model.DeliveryTime, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_"
-                    data-amount="@Model.Order.GrandTotal.ToString().Replace(".", "")"
-                    data-name="Stripe.com"
-                    data-description="Widget"
-                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                    data-locale="auto"
-                    data-zip-code="true">
-            </script>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                            data-key="pk_test_"
+                            data-amount="@Model.Order.GrandTotal.ToString().Replace(".", "")"
+                            data-name="Stripe.com"
+                            data-description="Widget"
+                            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                            data-locale="auto"
+                            data-zip-code="true">
+                    </script>
+                </div>
+            </div>
+
         }
     </div>
-    <div class="col-sm-6">
 
+    <div class="col-sm-4 hidden-xs">
+        <h4>Cart</h4>
     </div>
+
+    <script>
+        function getAvailableTimes() {
+            var deliveryDay = $('#delivery_day').val();
+
+            var deliveryTimeOptions = {};
+            deliveryTimeOptions.url = "@Url.Action("GetDeliveryTimes", "Checkout")";
+            deliveryTimeOptions.type = "POST";
+            deliveryTimeOptions.data = JSON.stringify({ deliveryDay: $("#delivery_day").val() });
+            deliveryTimeOptions.datatype = "json";
+            deliveryTimeOptions.contentType = "application/json";
+            deliveryTimeOptions.success = function (timeList) {
+                $("#delivery_time").empty();
+                for (var i = 0; i < timeList.length; i++) {
+                    $("#delivery_time").append("<option>" + timeList[i] + "</option>");
+                }
+            };
+            deliveryTimeOptions.error = function () { alert("Error in Getting Delivery Times"); };
+            $.ajax(deliveryTimeOptions);
+
+        }
+    </script>
+
 </div>

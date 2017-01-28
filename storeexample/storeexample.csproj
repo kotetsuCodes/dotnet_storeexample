@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201701070524185_UPdatedCustomer.Designer.cs">
       <DependentUpon>201701070524185_UPdatedCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701281710516_AddDeliveryHourStartAndEnd.cs" />
+    <Compile Include="Migrations\201701281710516_AddDeliveryHourStartAndEnd.Designer.cs">
+      <DependentUpon>201701281710516_AddDeliveryHourStartAndEnd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
@@ -471,6 +475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701070524185_UPdatedCustomer.resx">
       <DependentUpon>201701070524185_UPdatedCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701281710516_AddDeliveryHourStartAndEnd.resx">
+      <DependentUpon>201701281710516_AddDeliveryHourStartAndEnd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

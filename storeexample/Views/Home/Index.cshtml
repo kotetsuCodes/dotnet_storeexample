@@ -44,7 +44,7 @@ else
 <div class="row">
     <div class="col-md-6">
 
-        @using (Ajax.BeginForm("VerifyZipCode", "Home", new {  },  new AjaxOptions() { HttpMethod = "POST", OnSuccess = "updateZipCodeMessage(data);", OnFailure = "updateZipCodeMessage(data);" }, new { @class = "form-inline text-center" }))
+        @using (Ajax.BeginForm("VerifyZipCode", "Home", new {  },  new AjaxOptions() { HttpMethod = "POST", OnBegin = "$('#zipResultIcon').hide();", OnComplete = "$('#zipResultIcon').show();", LoadingElementId = "loadingIcon", OnSuccess = "updateZipCodeMessage(data);", OnFailure = "updateZipCodeMessage(data);" }, new { @class = "form-inline text-center" }))
         {
             <div class="form-group">
                 @Html.LabelFor(model => model.ZipCode, new { @class = "sr-only" })
@@ -54,6 +54,7 @@ else
             <button type="submit" class="btn btn-primary">
                 <span id="zipResultText"></span>
                 <i id="zipResultIcon" class="fa fa-search"></i>
+                <i id="loadingIcon" class="fa fa-spinner fa-spin" style="display:none;"></i>
             </button>
         }
     </div>

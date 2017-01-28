@@ -18,6 +18,9 @@ namespace storeexample.Models
         public bool DeliveryAvailable { get; set; }
         public decimal DeliveryFee { get; set; }
 
+        public int DeliveryHourStart { get; set; }
+        public int DeliveryHourEnd { get; set; }
+
         public bool IsMultiNational { get; set; }
         public bool IsMultiProvince { get; set; }
         public bool IsMultiCity { get; set; }
