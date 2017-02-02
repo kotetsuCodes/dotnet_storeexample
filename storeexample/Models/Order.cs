@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace storeexample.Models
@@ -20,8 +21,11 @@ namespace storeexample.Models
         public int? CustomerId { get; set; }
 
         //Order Info
+        [DataType(DataType.Currency)]
         public decimal DeliveryCharge { get; set; }
+        [DataType(DataType.Currency)]
         public decimal SubTotal { get; set; }
+        [DataType(DataType.Currency)]
         public decimal GrandTotal { get; set; }
 
         public string DeliveryAddress1 { get; set; }

@@ -2,17 +2,40 @@
 
 <h3>Order Cart</h3>
 
-@foreach (var orderedProduct in Model.Order.OrderedProducts)
-{
-    <div>
-        <span>@orderedProduct.Product.DisplayName - @orderedProduct.QuantityOrdered</span>
-    </div>
+<ul class="list-group">
 
 
-}
+    @foreach (var orderedProduct in Model.Order.OrderedProducts)
+    {
+        <li class="list-group-item">
+            <span>@orderedProduct.Product.DisplayName - @orderedProduct.QuantityOrdered</span>
+        </li>
+
+
+    }
+
+    <li class="list-group-item">
+        <span>Subtotal:</span>
+        <span class="pull-right">@Html.DisplayFor(x => x.Order.SubTotal)</span>
+    </li>
+
+    @if (Model.Order.DeliveryCharge > decimal.Zero)
+    {
+        <li class="list-group-item">
+            <span>Delivery Fee: </span>
+            <span class="pull-right">@Html.DisplayFor(x => x.Order.DeliveryCharge)</span>
+        </li>
+    }
+    <li class="list-group-item">
+        <span>Total:</span>
+        <span class="pull-right">@Html.DisplayFor(x => x.Order.GrandTotal)</span>
+    </li>
+
+
+</ul>
+
 
 <div>
-    @Model.Order.OrderId
     @Html.ActionLink("Check out", "Index", "Checkout", new { orderId = Model.Order.OrderId }, new { @class = "btn btn-primary" })
 </div>
 

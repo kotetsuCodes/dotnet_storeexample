@@ -8,6 +8,6 @@ namespace storeexample.Models
     public class OrderViewModel
     {
         public Order Order { get; set; }
-        public IList<Product> Products { get; set; }
+        public IList<Product> Products { get; set; }        
     }
 }

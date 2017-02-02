@@ -16,7 +16,10 @@
                     </div>
 
                     <div class="productContentArea">
-                        <h2>@product.DisplayName - @product.BasePrice</h2>
+                        <p>@product.DisplayName</p>
+                        <p>
+                            @Html.DisplayFor(x => product.BasePrice)
+                        </p>
                         <p>
                             @product.Description
                         </p>

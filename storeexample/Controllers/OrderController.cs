@@ -61,6 +61,9 @@ namespace storeexample.Controllers
                 orderedProduct.QuantityOrdered++;
             }
 
+            order.SubTotal += orderedProduct.Product.BasePrice;
+            order.GrandTotal = order.SubTotal + order.DeliveryCharge;
+
             db.SaveChanges();
 
             var model = new OrderViewModel();
@@ -88,6 +91,8 @@ namespace storeexample.Controllers
 
             if (orderedProduct != null)
             {
+                order.SubTotal -= orderedProduct.Product.BasePrice;
+                order.GrandTotal = order.SubTotal + order.DeliveryCharge;
                 if (orderedProduct.QuantityOrdered == 1)
                 {
                     db.OrderedProducts.Remove(orderedProduct);

@@ -268,6 +268,10 @@
     <Compile Include="Migrations\201701281710516_AddDeliveryHourStartAndEnd.Designer.cs">
       <DependentUpon>201701281710516_AddDeliveryHourStartAndEnd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702020436275_AddedCurrencyAnnotations.cs" />
+    <Compile Include="Migrations\201702020436275_AddedCurrencyAnnotations.Designer.cs">
+      <DependentUpon>201702020436275_AddedCurrencyAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminHomeViewModels.cs" />
     <Compile Include="Models\AdminLoginViewModels.cs" />
@@ -478,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701281710516_AddDeliveryHourStartAndEnd.resx">
       <DependentUpon>201701281710516_AddDeliveryHourStartAndEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702020436275_AddedCurrencyAnnotations.resx">
+      <DependentUpon>201702020436275_AddedCurrencyAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

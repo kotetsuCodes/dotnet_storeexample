@@ -105,6 +105,9 @@ namespace storeexample.Controllers
                     Status = OrderStatus.Initial,
                     City = city,
                     State = state,
+                    SubTotal = decimal.Zero,
+                    GrandTotal = decimal.Zero,
+                    DeliveryCharge = db.Store.First().DeliveryFee
                 });
 
                 db.SaveChanges();
