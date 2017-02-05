@@ -42,7 +42,7 @@ else
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-3 col-xs-12">
 
         @using (Ajax.BeginForm("VerifyZipCode", "Home", new {  },  new AjaxOptions() { HttpMethod = "POST", OnBegin = "$('#zipResultIcon').hide();", OnComplete = "$('#zipResultIcon').show();", LoadingElementId = "loadingIcon", OnSuccess = "updateZipCodeMessage(data);", OnFailure = "updateZipCodeMessage(data);" }, new { @class = "form-inline text-center" }))
         {
