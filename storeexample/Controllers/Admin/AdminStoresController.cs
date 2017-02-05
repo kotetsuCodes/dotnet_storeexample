@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using storeexample.Models;
+using storeexample.Utilities;
 
 namespace storeexample.Controllers.Admin
 {
@@ -46,10 +47,21 @@ namespace storeexample.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,DeliveryFee,DeliveryHourStart,DeliveryHourEnd,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl,ZipCodeNotInServiceMessage")] Store store)
+        public ActionResult Create([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,DeliveryFee,DeliveryHourStart,DeliveryHourEnd,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl,ZipCodeNotInServiceMessage,EmailHost,EmailUsername,EmailPassword,StripePrivateKey,OrderConfirmationFromAddress")] Store store)
         {
             if (ModelState.IsValid)
             {
+                var emailEncrypted = store.EmailPassword.GetEncrypted();
+                var stripeEncrypted = store.StripePrivateKey.GetEncrypted();
+
+                store.EmailPassword = emailEncrypted.EncryptedString;
+                store.EmailPasswordIV = emailEncrypted.IV;
+                store.EmailPasswordKey = emailEncrypted.Key;
+
+                store.StripePrivateKey = stripeEncrypted.EncryptedString;
+                store.StripeIV = stripeEncrypted.IV;
+                store.StripeKey = stripeEncrypted.Key;
+
                 db.Store.Add(store);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +90,21 @@ namespace storeexample.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,DeliveryFee,DeliveryHourStart,DeliveryHourEnd,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl,ZipCodeNotInServiceMessage")] Store store)
+        public ActionResult Edit([Bind(Include = "StoreId,DisplayName,Url,IsOpenOnHolidays,HolidayMessage,DeliveryAvailable,DeliveryFee,DeliveryHourStart,DeliveryHourEnd,IsMultiNational,IsMultiProvince,IsMultiCity,HomeSplashImageUrl,ZipCodeNotInServiceMessage,EmailHost,EmailUsername,EmailPassword,StripePrivateKey,OrderConfirmationFromAddress")] Store store)
         {
             if (ModelState.IsValid)
             {
+                var emailEncrypted = store.EmailPassword.GetEncrypted();
+                var stripeEncrypted = store.StripePrivateKey.GetEncrypted();
+
+                store.EmailPassword = emailEncrypted.EncryptedString;
+                store.EmailPasswordIV = emailEncrypted.IV;
+                store.EmailPasswordKey = emailEncrypted.Key;
+
+                store.StripePrivateKey = stripeEncrypted.EncryptedString;
+                store.StripeIV = stripeEncrypted.IV;
+                store.StripeKey = stripeEncrypted.Key;
+
                 db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

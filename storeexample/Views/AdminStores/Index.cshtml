@@ -48,6 +48,33 @@
         <th>
             @Html.DisplayNameFor(model => model.ZipCodeNotInServiceMessage)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailHost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailUsername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StripePrivateKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailPasswordIV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailPasswordKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StripeIV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StripeKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderConfirmationFromAddress)
+        </th>
         <th></th>
     </tr>
 
@@ -91,6 +118,33 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ZipCodeNotInServiceMessage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailHost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailUsername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StripePrivateKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailPasswordIV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailPasswordKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StripeIV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StripeKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderConfirmationFromAddress)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.StoreId }) |

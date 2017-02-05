@@ -37,5 +37,7 @@ namespace storeexample.Models
         [Display(Name = "Delivery Time")]
         [Required]
         public List<SelectListItem> DeliveryTime { get; set; }
+        public string Day { get; set; }
+        public string Time { get; set; }
     }
 }

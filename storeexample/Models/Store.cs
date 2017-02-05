@@ -32,5 +32,20 @@ namespace storeexample.Models
         public virtual List<Driver> Drivers { get; set; }
         public virtual List<Contact> ContactInfo { get; set; }
         public string ZipCodeNotInServiceMessage { get; set; }
+
+        //Email Details
+        public string EmailHost { get; set; }
+        public string EmailUsername { get; set; }
+        public string EmailPassword { get; set; }
+
+        public string StripePrivateKey { get; set; }
+
+        public string EmailPasswordIV { get; set; }
+        public string EmailPasswordKey { get; set; }
+
+        public string StripeIV { get; set; }
+        public string StripeKey {get;set;}
+
+        public string OrderConfirmationFromAddress { get; set; }
     }
 }

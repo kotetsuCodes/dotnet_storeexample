@@ -1,8 +1,12 @@
 ﻿using storeexample.Models;
+using storeexample.Utilities;
 using Stripe;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -118,6 +122,8 @@ namespace storeexample.Controllers
             order.IsRecurring = false;
             order.RecurFrequency = RecurFrequency.None;
 
+            order.ScheduledDeliveryDate = DateTime.Parse($"{model.Day} {model.Time}");
+
             Customer customer = new Customer()
             {
                 Address1 = model.DeliveryAddress,
@@ -133,12 +139,39 @@ namespace storeexample.Controllers
             db.SaveChanges();
 
             //new StripeClient(db.Store.First().StripeKey)
-            var stripeClient = new StripeClient("sk_test_");
+            var stripeClient = new StripeClient(db.Store.First().StripePrivateKey.GetDecryptedString(db.Store.First().StripeIV, db.Store.First().StripeKey));
 
             dynamic response = stripeClient.CreateChargeWithToken(order.GrandTotal, model.StripeToken);
 
             order.Status = OrderStatus.Paid;
             db.SaveChanges();
+
+            StringBuilder emailBody = new StringBuilder();
+
+            emailBody.AppendLine("--Order Details--");
+            emailBody.AppendLine($"Customer Name: {customer.FirstName} {customer.LastName}");
+            emailBody.AppendLine($"Phone: {customer.Phone}");
+            
+            emailBody.AppendLine($"Delivery Address: {order.DeliveryAddress1} {order.DeliveryAddress2} {order.DeliveryAddress3}");
+            emailBody.AppendLine($"Delivery Time: {order.ScheduledDeliveryDate.Value.ToShortDateString()} {order.ScheduledDeliveryDate.Value.ToShortTimeString()}");
+            emailBody.AppendLine($"Delivery Charge: ${order.DeliveryCharge}");
+
+            foreach(var orderedProducts in order.OrderedProducts)
+            {
+                emailBody.AppendLine($"{orderedProducts.Product.DisplayName} x {orderedProducts.QuantityOrdered} @ ${orderedProducts.Product.BasePrice}");
+            }
+
+            emailBody.AppendLine();
+            emailBody.AppendLine($"Order Total: ${order.GrandTotal}");
+
+            var smtpClient = new SmtpClient()
+            {
+                Port = 587,
+                Host = db.Store.First().EmailHost,
+                Credentials = new System.Net.NetworkCredential(db.Store.First().EmailUsername, db.Store.First().EmailPassword.GetDecryptedString(db.Store.First().EmailPasswordIV, db.Store.First().EmailPasswordKey)),
+            };
+
+            smtpClient.Send(db.Store.First().OrderConfirmationFromAddress, order.Customer.EmailAddress, $"{db.Store.First().DisplayName} Order Confirmation", emailBody.ToString());
 
             return View("OrderComplete", model);
         }

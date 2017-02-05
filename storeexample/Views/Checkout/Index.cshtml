@@ -82,7 +82,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.DeliveryDay, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-sm-10">
-                    @Html.DropDownList("delivery_day", Model.DeliveryDay, new { @class = "form-control" })
+                    @Html.DropDownListFor(m => m.Day, Model.DeliveryDay, new { id = "delivery_day", @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.DeliveryDay, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -90,7 +90,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.DeliveryTime, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-sm-10">
-                    @Html.DropDownList("delivery_time", Model.DeliveryTime, new { @class = "form-control", onChange = "getAvailableTimes();" })
+                    @Html.DropDownListFor(m => m.Time, Model.DeliveryTime, new { id = "delivery_time", @class = "form-control", onChange = "getAvailableTimes();" })
                     @Html.ValidationMessageFor(model => model.DeliveryTime, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -98,7 +98,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="pk_test_"
+                            data-key="pk_test_amY1HZz5FuddZVrWpDqCg602"
                             data-amount="@Model.Order.GrandTotal.ToString().Replace(".", "")"
                             data-name="Stripe.com"
                             data-description="Widget"

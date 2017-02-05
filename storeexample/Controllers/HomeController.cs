@@ -55,10 +55,9 @@ namespace storeexample.Controllers
 
             var request = Request;
 
-            int parsedZip;
 
             //check if zipcode is a valid integer
-            if (int.TryParse(zipCode, out parsedZip) == false)
+            if (int.TryParse(zipCode, out int parsedZip) == false)
             {
                 return new JsonResult() { Data = new { Success = false, Message = "Invalid ZipCode" } };
             }
